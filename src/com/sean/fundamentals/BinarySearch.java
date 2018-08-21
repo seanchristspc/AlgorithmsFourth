@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 public class BinarySearch {
     public static int rank(int key,int[] a){
+        //array a must sorted
         int lo=0;
         int hi=a.length-1;
         while (lo<=hi){
@@ -15,7 +16,7 @@ public class BinarySearch {
             if(key<a[mid])
                 hi=mid-1;
             else if (key>a[mid])
-                lo=mid-1;
+                lo=mid+1;
             else
                 return mid;
 
@@ -23,11 +24,13 @@ public class BinarySearch {
         return -1;
     }
     public static void main(String[] args){
+        @SuppressWarnings("Deprecated")
         int[] whitelist= In.readInts(args[0]);
         Arrays.sort(whitelist);
         while (!StdIn.isEmpty()){
             int key=StdIn.readInt();
             if(rank(key,whitelist)==-1)
+
                 StdOut.println(key);
         }
     }
